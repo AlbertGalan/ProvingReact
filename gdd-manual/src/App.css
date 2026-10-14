@@ -1,3 +1,35 @@
+/* --- ESTILOS GENERALES Y RESET --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a24; /* Fondo oscuro retro para el manual */
+  color: #333;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Contenedor principal para centrar el manual y los botones */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+}
+
+.title {
+  color: #f1c40f;
+  text-shadow: 2px 2px #000;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* --- ESTILOS QUE YA TENÍAS --- */
 .counter {
   font-size: 16px;
   padding: 5px 10px;
