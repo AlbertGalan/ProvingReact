@@ -7,6 +7,7 @@ import coverImage from './assets/caratula.png';
 
 import coverRight from './assets/caratula_right.png';
 import coverLeft from './assets/caratula_left.png';
+import paperImage from './assets/paper.png';
 
 // Importamos los círculos de los botones
 import imgcat from './assets/catalan_circle.png';
@@ -55,7 +56,6 @@ const imagesMap = {
 
 function App() {
   const [isCoverOpen, setIsCoverOpen] = useState(false);
-  const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
 
   // Objeto con las imágenes para pasárselo al componente de selección
@@ -76,36 +76,30 @@ function App() {
     );
   }
 
-  if (!showLanguageSelector) {
+  if (!selectedLanguage) {
     return (
       <main className="cover-screen">
         <div className="cover-spread">
-                    <img src={coverLeft} alt="Lado izquierdo de la carátula" />
-
-          <section className="cover-inside" aria-label="Contenido de la carátula">
-            <h1>GDD Manual</h1>
-            <button
-              type="button"
-              className="gdd-button"
-              onClick={() => setShowLanguageSelector(true)}
-              
-            >
-              GDD
-            </button>
+          <section className="cover-panel cover-left" aria-label="Menú de la carátula">
+            <img className="cover-background" src={coverLeft} alt="Parte izquierda de la carátula" />
+            <div className="paper-menu">
+              <img className="paper-image" src={paperImage} alt="" />
+              <div className="paper-content">
+                <LanguageSelector
+                  embedded
+                  onSelectLanguage={setSelectedLanguage}
+                  images={langImages}
+                />
+              </div>
+            </div>
           </section>
 
-          <div className="cover-front">
-            <img src={coverImage} alt="Portada del GDD Manual" />
+          <div className="cover-panel cover-right">
             <img src={coverRight} alt="Lado derecho de la carátula" />
-            <img src={coverLeft} alt="Lado izquierdo de la carátula" />
           </div>
         </div>
       </main>
     );
-  }
-
-  if (!selectedLanguage) {
-    return <LanguageSelector onSelectLanguage={setSelectedLanguage} images={langImages} />;
   }
 
   // Obtenemos el array de imágenes correspondiente al idioma elegido ('en', 'es' o 'cat')
@@ -114,7 +108,7 @@ function App() {
   return (
     <div className="main-container">
       <button onClick={() => setSelectedLanguage(null)} style={{ marginBottom: '15px', cursor: 'pointer', padding: '5px 10px' }}>
-        ← Volver a selección de idioma
+        ← BACK
       </button>
 
       <HTMLFlipBook width={500} height={400} showCover={true}>
