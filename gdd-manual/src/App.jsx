@@ -8,6 +8,7 @@ import coverImage from './assets/caratula.png';
 import coverRight from './assets/caratula_right.png';
 import coverLeft from './assets/caratula_left.png';
 import paperImage from './assets/paper.png';
+import compactDisc from './assets/compact_disc.png';
 
 // Importamos los círculos de los botones
 import imgcat from './assets/catalan_circle.png';
@@ -56,6 +57,7 @@ const imagesMap = {
 
 function App() {
   const [isCoverOpen, setIsCoverOpen] = useState(false);
+  const [isDiscSpinning, setIsDiscSpinning] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
 
   // Objeto con las imágenes para pasárselo al componente de selección
@@ -96,6 +98,15 @@ function App() {
 
           <div className="cover-panel cover-right">
             <img src={coverRight} alt="Lado derecho de la carátula" />
+            <button
+              type="button"
+              className={`disc-button${isDiscSpinning ? ' is-spinning' : ''}`}
+              onClick={() => setIsDiscSpinning((spinning) => !spinning)}
+              aria-label={isDiscSpinning ? 'Detener el disco' : 'Girar el disco'}
+              aria-pressed={isDiscSpinning}
+            >
+              <img className="disc-image" src={compactDisc} alt="Disco compacto" />
+            </button>
           </div>
         </div>
       </main>
@@ -107,11 +118,15 @@ function App() {
 
   return (
     <div className="main-container">
-      <button onClick={() => setSelectedLanguage(null)} style={{ marginBottom: '15px', cursor: 'pointer', padding: '5px 10px' }}>
+      <button
+        type="button"
+        className="back-button"
+        onClick={() => setSelectedLanguage(null)}
+      >
         ← BACK
       </button>
 
-      <HTMLFlipBook width={500} height={400} showCover={true}>
+      <HTMLFlipBook width={700} height={400} showCover={true}>
         {currentImages.map((imageSrc, index) => (
           <div className="page" key={index}>
             <img 

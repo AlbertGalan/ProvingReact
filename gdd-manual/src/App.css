@@ -111,6 +111,44 @@ body {
   inset: 0;
 }
 
+.disc-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.disc-button:focus-visible {
+  outline: 3px solid #f1c40f;
+  outline-offset: 8px;
+}
+
+.disc-image {
+  display: block;
+  width: clamp(150px, 24vw, 300px);
+  height: auto;
+  transition: filter 0.2s ease;
+}
+
+.disc-button:hover .disc-image {
+  filter: brightness(1.12);
+}
+
+.disc-button.is-spinning .disc-image {
+  animation: disc-spin 1s linear infinite;
+}
+
+@keyframes disc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .paper-menu {
   position: relative;
   width: 86%;
@@ -166,6 +204,26 @@ body {
 .language-selector-embedded .circle-button img {
   width: 44px !important;
   height: 44px !important;
+}
+
+.back-button {
+  padding: 5px 10px;
+  background-color: #f4e4bc;
+  border: 2px solid #8b6f47;
+  border-radius: 4px;
+  color: #1a1a24;
+  cursor: pointer;
+  font: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #e0c99a;
+}
+
+.back-button:focus-visible {
+  outline: 2px solid #8b6f47;
+  outline-offset: 2px;
 }
 
 @media (max-width: 700px) {
