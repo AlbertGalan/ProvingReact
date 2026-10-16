@@ -116,10 +116,13 @@ body {
   top: 50%;
   left: 50%;
   z-index: 1;
+  display: block;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
+  line-height: 0;
+  text-decoration: none;
   transform: translate(-50%, -50%);
 }
 
@@ -140,12 +143,12 @@ body {
 }
 
 .disc-button.is-spinning .disc-image {
-  animation: disc-spin 1s linear infinite;
+  animation: disc-spin 2s linear;
 }
 
 @keyframes disc-spin {
   to {
-    transform: rotate(360deg);
+    transform: rotate(720deg);
   }
 }
 

@@ -98,15 +98,20 @@ function App() {
 
           <div className="cover-panel cover-right">
             <img src={coverRight} alt="Lado derecho de la carátula" />
-            <button
-              type="button"
+            <a
+              href="/game/CoinFlipTower.zip"
+              download="CoinFlipTower.zip"
               className={`disc-button${isDiscSpinning ? ' is-spinning' : ''}`}
-              onClick={() => setIsDiscSpinning((spinning) => !spinning)}
-              aria-label={isDiscSpinning ? 'Detener el disco' : 'Girar el disco'}
-              aria-pressed={isDiscSpinning}
+              onClick={() => {
+                if (!isDiscSpinning) {
+                  setIsDiscSpinning(true);
+                }
+              }}
+              onAnimationEnd={() => setIsDiscSpinning(false)}
+              aria-label="Descargar CoinFlipTower y girar el disco"
             >
               <img className="disc-image" src={compactDisc} alt="Disco compacto" />
-            </button>
+            </a>
           </div>
         </div>
       </main>
