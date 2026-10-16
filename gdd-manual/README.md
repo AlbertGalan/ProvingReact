@@ -1,5 +1,19 @@
 # React + Vite
 
+## Publicar en GitHub Pages
+
+Este proyecto se publica automáticamente mediante
+[`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pages.yml).
+
+1. Sube los cambios a la rama `main`.
+2. En GitHub, abre **Settings > Pages**.
+3. En **Build and deployment**, selecciona **GitHub Actions** como origen.
+4. Espera a que termine el workflow **Deploy to GitHub Pages** en la pestaña
+   **Actions**.
+
+La página quedará disponible en:
+`https://albertgalan.github.io/ProvingReact/`
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

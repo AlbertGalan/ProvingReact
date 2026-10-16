@@ -99,7 +99,7 @@ function App() {
           <div className="cover-panel cover-right">
             <img src={coverRight} alt="Lado derecho de la carátula" />
             <a
-              href="/game/CoinFlipTower.zip"
+              href={`${import.meta.env.BASE_URL}game/CoinFlipTower.zip`}
               download="CoinFlipTower.zip"
               className={`disc-button${isDiscSpinning ? ' is-spinning' : ''}`}
               onClick={() => {
