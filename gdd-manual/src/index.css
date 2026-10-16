@@ -54,9 +54,9 @@ body {
   margin: 0;
 }
 
-#root {
+/*#root {
   width: 1126px;
-  max-width: 100%;
+  max-width: 120%;
   margin: 0 auto;
   text-align: center;
   border-inline: 1px solid var(--border);
@@ -64,7 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-}
+}*/
 
 h1,
 h2 {

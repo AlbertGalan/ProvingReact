@@ -22,6 +22,159 @@ body {
   padding: 20px;
 }
 
+.cover-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 24px;
+  perspective: 1600px;
+}
+
+.cover-button {
+  display: block;
+  max-width: min(90vw, 620px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.cover-button:hover {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+}
+
+.cover-button:focus-visible {
+  outline: 3px solid #f1c40f;
+  outline-offset: 8px;
+}
+
+.cover-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.cover-spread {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr);
+  width: min(92vw, 1000px);
+  min-height: min(72vh, 650px);
+  background: #11111a;
+  box-shadow: 0 24px 60px rgb(0 0 0 / 45%);
+  transform: rotateX(2deg);
+  animation: cover-open 0.55s ease-out both;
+}
+
+@keyframes cover-open {
+  from {
+    opacity: 0;
+    transform: rotateY(-12deg) rotateX(2deg) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(2deg) scale(1);
+  }
+}
+
+.cover-inside,
+.cover-front {
+  min-width: 0;
+  border: 1px solid rgb(255 255 255 / 12%);
+}
+
+.cover-inside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 32px;
+  background:
+    radial-gradient(circle at center, rgb(241 196 15 / 8%), transparent 55%),
+    #20202c;
+  color: #f4f1df;
+  text-align: center;
+}
+
+.cover-inside h1 {
+  margin: 0;
+  color: #f1c40f;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  text-shadow: 2px 2px #000;
+  text-transform: uppercase;
+}
+
+.gdd-button {
+  min-width: 160px;
+  padding: 16px 32px;
+  border: 2px solid #f1c40f;
+  border-radius: 4px;
+  background: #f1c40f;
+  color: #1a1a24;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.gdd-button:hover {
+  background: transparent;
+  color: #f1c40f;
+  transform: translateY(-2px);
+}
+
+.gdd-button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 5px;
+}
+
+.cover-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #15151f;
+}
+
+.cover-front img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .cover-screen {
+    padding: 16px;
+  }
+
+  .cover-spread {
+    grid-template-columns: 1fr;
+    width: min(94vw, 500px);
+  }
+
+  .cover-inside {
+    min-height: 240px;
+    padding: 24px;
+  }
+
+  .cover-front {
+    min-height: 360px;
+  }
+}
+
 .title {
   color: #f1c40f;
   text-shadow: 2px 2px #000;

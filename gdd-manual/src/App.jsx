@@ -3,6 +3,11 @@ import LanguageSelector from './components/LanguageSelector';
 import HTMLFlipBook from 'react-pageflip';
 import './App.css';
 
+import coverImage from './assets/caratula.png';
+
+import coverRight from './assets/caratula_right.png';
+import coverLeft from './assets/caratula_left.png';
+
 // Importamos los círculos de los botones
 import imgcat from './assets/catalan_circle.png';
 import imgen from './assets/english_circle.png';
@@ -49,10 +54,55 @@ const imagesMap = {
 };
 
 function App() {
+  const [isCoverOpen, setIsCoverOpen] = useState(false);
+  const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
 
   // Objeto con las imágenes para pasárselo al componente de selección
   const langImages = { en: imgen, es: imges, cat: imgcat };
+
+  if (!isCoverOpen) {
+    return (
+      <main className="cover-screen">
+        <button
+          type="button"
+          className="cover-button"
+          onClick={() => setIsCoverOpen(true)}
+          aria-label="Abrir la carátula"
+        >
+          <img src={coverImage} alt="Portada del GDD Manual" />
+        </button>
+      </main>
+    );
+  }
+
+  if (!showLanguageSelector) {
+    return (
+      <main className="cover-screen">
+        <div className="cover-spread">
+                    <img src={coverLeft} alt="Lado izquierdo de la carátula" />
+
+          <section className="cover-inside" aria-label="Contenido de la carátula">
+            <h1>GDD Manual</h1>
+            <button
+              type="button"
+              className="gdd-button"
+              onClick={() => setShowLanguageSelector(true)}
+              
+            >
+              GDD
+            </button>
+          </section>
+
+          <div className="cover-front">
+            <img src={coverImage} alt="Portada del GDD Manual" />
+            <img src={coverRight} alt="Lado derecho de la carátula" />
+            <img src={coverLeft} alt="Lado izquierdo de la carátula" />
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   if (!selectedLanguage) {
     return <LanguageSelector onSelectLanguage={setSelectedLanguage} images={langImages} />;
